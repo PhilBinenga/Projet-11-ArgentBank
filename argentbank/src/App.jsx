@@ -8,9 +8,10 @@ import Footer from './component/footer/footer.jsx'
 import Home from './pages/home/home.jsx'
 import Login from './pages/login/login.jsx'
 import User from './pages/user/user.jsx'
+import { Provider } from 'react-redux'
 function App() {
   return (
-    
+   
     <BrowserRouter>
     <Header />
     <Routes>
@@ -21,6 +22,7 @@ function App() {
     </Routes>
     <Footer />
     </BrowserRouter>
+  
     
   )
 }
