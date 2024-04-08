@@ -41,7 +41,7 @@ function user() {
     accountNumber='x8349'
     amount='$184.30'
     description='Current Balance'
-    />'
+    />
     
   </main>
   )
