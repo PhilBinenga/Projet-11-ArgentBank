@@ -50,7 +50,7 @@ export const loginUser = (email, password) => {
             const data = await response.json();
             if (response.ok) {
                 const {token} = data;
-                sessionStorage.setItem('token', token);
+                sessionStorage.getItem('token', token);
                 dispatch(loginSuccess(userData));
                 dispatch(fetchUser());
             } else {
