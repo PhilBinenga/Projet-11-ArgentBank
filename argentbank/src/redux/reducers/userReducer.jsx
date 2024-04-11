@@ -1,43 +1,32 @@
-import { LOGIN_SUCCEED, LOGIN_ERROR, LOGOUT, SET_PROFILE, EDIT_USERNAME} from "../actions/userActions.jsx";
+import { SET_PROFILE, EDIT_USERNAME,LOGOUT } from "../actions/userActions.jsx";
 
-//
 const initialState = {
-    userProfile: {},
-    error: null,
-    
-}
+    status: 'null',
+    userData: {},
+};
 
-const userReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case LOGIN_SUCCEED: 
-        return {
-            ...state, 
-            error: null,
-        };
-        case LOGIN_ERROR:
-            return {
-                ...state,
-                error: action.payload,
-            };
-        case LOGOUT:
-            return {
-                ...initialState,
-            };
+export const userReducer = (state = initialState, action) => {
+    switch(action.type) {
         case SET_PROFILE:
             return {
                 ...state,
-            userProfile: action.payload,
+                status: 'SUCCEED',
+                userData: action.payload,
             };
-        case EDIT_USERNAME:
-            return {
-                ...state, userProfile: {
-                    ...state.userProfile,
-                    username: action.payload
-                },
-            };
-            default:
-                return state;
+            case EDIT_USERNAME:
+                return {
+                    ...state,
+                    status:'MODIFIED',
+                    userData: {
+                        ...state.userData,
+                        username: action.payload,
+                    },
+                };
+                case LOGOUT: {
+                    return initialState;
+                }
+                default:
+                    return state;
     }
 };
-
 export default userReducer;

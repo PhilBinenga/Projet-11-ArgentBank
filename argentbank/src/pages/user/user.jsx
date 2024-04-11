@@ -2,6 +2,7 @@ import React from 'react'
 import Account from '../../component/account/account.jsx'
 
 function user() {
+  
   return (
   <main className='main bg-dark'>
     <div className='header'>
@@ -11,7 +12,7 @@ function user() {
       <div id='edit-section'>
         <form name='edit'>
           <div className='profil-input-wrapper'>
-            <label htmlFor='userName'>User name :</label>
+            <label htmlFor='userName'>Username :</label>
             <input type='text' id='userName' />
           </div>
         </form>

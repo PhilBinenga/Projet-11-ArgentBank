@@ -58,8 +58,10 @@ body {
 }
 
 .main-nav-item {
+  display: flex;
   text-decoration: none;
   margin-right: 0.5rem;
+  align-items: center;
 }
 
 .main-nav-item:hover {
@@ -74,6 +76,17 @@ body {
 .main-nav-logo-image {
   max-width: 100%;
   width: 200px;
+}
+.container-user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.container-info {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .hero {

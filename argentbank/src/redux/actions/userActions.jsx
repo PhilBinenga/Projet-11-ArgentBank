@@ -1,67 +1,28 @@
-export const LOGIN_SUCCEED = 'LOGIN_SUCCEED';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-export const LOGOUT = 'LOGOUT';
 export const SET_PROFILE = 'SET_PROFILE';
 export const EDIT_USERNAME = 'EDIT_USERNAME';
+export const LOGOUT = 'LOGOUT';
 
 
-// action pour gérer le succès de la connection utilisateur 
-
-export const loginSuccess = (userData) => ({
-    type: LOGIN_SUCCEED,
+export const setProfile = (userData) => {
+    return {
+    type: SET_PROFILE,
     payload: userData,
-});
+    };
+};
 
-// action pour gérer la fail de la connection utilisateur
-
-export const loginError = (error) => ({
-    type: LOGIN_ERROR,
-    payload: error,
-});
-
-// action pour gérer la déconnection utilisateur
+export const editUser = (username) => {
+    return {
+    type: EDIT_USERNAME,
+    payload: username,
+    };
+};
 
 export const logout = () => {
-    sessionStorage.removeItem('token');
     return {
         type: LOGOUT,
     };
 };
 
-export const setProfile = (userData) => ({
-    type: SET_PROFILE,
-    payload: userData,
-});
-
-// action pour gérer la connection utilisateur
-export const loginUser = (email, password) => {
-    return async (dispatch) => {
-        try {
-            const userData = {email, password};
-            const response = await fetch("http://localhost:3001/api/v1/user/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(userData),
-            });
-
-            const data = await response.json();
-            if (response.ok) {
-                const {token} = data;
-                sessionStorage.getItem('token', token);
-                dispatch(loginSuccess(userData));
-                dispatch(fetchUser());
-            } else {
-                sessionStorage.removeItem('token');
-                dispatch(loginError('Email et mot de passe incorrect.'))
-            };
-        } catch(error) {
-            dispatch(loginError('Erreur lors de la connexion.'))
-        }
-    };
-};
 
 // action pour avoir le profil utilisateur 
 
@@ -75,14 +36,13 @@ export const fetchUser = () => {
             const response = await fetch("http://localhost:3001/api/v1/user/profile", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
                 },
             });
             if (response.ok) {
-                const data = await response.json();
-                const userProfile = data.body;
-                dispatch(setProfile(userProfile));
+               const userData = await response.json()
+                dispatch(setProfile(userData));
  
             } else {
                dispatch(loginError('Erreur lors de la récupération du profil utilisateur'));
