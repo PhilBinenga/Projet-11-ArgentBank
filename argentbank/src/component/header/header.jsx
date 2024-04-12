@@ -8,7 +8,7 @@ import {useSelector, useDispatch} from 'react-redux'
 
 function header() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-  const username = useSelector((state) => state.user.userData.firstName);
+  const firstname = useSelector((state) => state.user.userData.firstname);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -28,9 +28,9 @@ function header() {
             </Link>
             {isLoggedIn? (
             <div className='container-user'>
-                <Link to='/user' className='container-info'>
+                <Link to='/profile' className='container-info'>
                 <i className="fa fa-user-circle"></i>
-                <p>{username}</p>
+                <p>{firstname}</p>
                 </Link>
                 <Link to='/' onClick={handleLogout} className='main-nav-item'>
                 <i className="fa fa-sign-out" />

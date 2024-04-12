@@ -34,14 +34,11 @@ const loginform = () => {
         const data = await response.json();
         const token = data.body.token;
         if(rememberMe){
-          localStorage.setItem('token', token);
-        } else {
           sessionStorage.setItem('token', token);
         }
-        navigate('/user');
+        navigate('/profile');
         dispatch(loginSuccess({token}));
       } else if (response.status === 400) {
-        localStorage.removeItem('token');
         sessionStorage.removeItem('token');
         setErrorMessage('Mot de passe ou utilisateur invalide')
       }

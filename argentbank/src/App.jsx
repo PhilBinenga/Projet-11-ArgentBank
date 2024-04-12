@@ -7,7 +7,7 @@ import Footer from './component/footer/footer.jsx'
 
 import Home from './pages/home/home.jsx'
 import Login from './pages/login/login.jsx'
-import User from './pages/user/user.jsx'
+import Profile from './pages/profile/profile.jsx'
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<Login />} />
-      <Route path='/user' element={<User/>} />
+      <Route path='/profile' element={<Profile/>} />
       <Route path='*' element={<Error />} />
     </Routes>
     <Footer />
