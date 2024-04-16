@@ -54,7 +54,7 @@ e.preventDefault();
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${'token'}`
+        Authorization: `Bearer ${sessionStorage.getItem('token')}`
       },
       body: JSON.stringify({userName}),
     });
